@@ -42,11 +42,12 @@ Unidades, endereços, empresas e personais são fictícios (projeto escolar).
 - **Apple Watch / Galaxy Watch no celular:** exige módulos nativos (HealthKit / Health Connect) e um "development build"
   do Expo; não funciona no Expo Go. A tela já está pronta para receber esses dados.
 
-## Fundo com pessoas treinando
-Por padrão o app usa uma ilustração animada de atletas (sem arquivos de imagem). Para usar uma foto real,
-coloque-a em `assets/` e edite `FOTO_FUNDO` em `constants/marca.js`.
-
-## Figuras dos exercícios
-Cada um dos 30 exercícios tem um boneco desenhado (início e fim do movimento, com barra, halteres, banco etc.),
-animado na tela de detalhes. Para usar uma **foto real**, coloque a imagem em `assets/exercicios/` e registre em
-`data/fotos-exercicios.js`; a foto passa a aparecer no lugar do desenho. Os desenhos ficam em `data/figuras.js`.
+## Fotos reais (em vez dos desenhos)
+Já incluída: só a foto de fundo (assets/fundo-treino.jpg). Para adicionar fotos de pessoas reais, sem mexer no código:
+1. Coloque as imagens (jpg, png ou webp):
+   - `assets/exercicios/<id>.jpg` → foto de cada exercício (o nome é o `id` de `data/exercicios.js`, ex.: `supino-reto.jpg`)
+   - `assets/personais/<id>.jpg` → foto de cada personal (`rafael`, `camila`, `bruno`, `juliana`, `thiago`)
+   - `assets/fundo-treino.jpg` → foto de pessoas treinando para o fundo da intro, do início e do cadastro
+2. Rode `node scripts/gerar-fotos.js` (ele registra as fotos e lista os exercícios que ainda estão sem foto).
+3. Reinicie com `npx expo start -c`.
+O exercício que ainda não tiver foto mostra uma capa simples com o ícone e o grupo muscular (os bonecos foram removidos). Use só fotos livres (Unsplash, Pexels, Pixabay) ou suas, e cite a fonte.

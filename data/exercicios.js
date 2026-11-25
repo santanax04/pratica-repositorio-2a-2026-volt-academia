@@ -1,7 +1,7 @@
 // Catálogo local de exercícios (sem API). `icone` usa MaterialCommunityIcons.
 export const GRUPOS = ['Peito', 'Costas', 'Pernas', 'Ombros', 'Braços', 'Abdômen', 'Cardio', 'Mobilidade'];
 
-export const EXERCICIOS = [
+const BASE = [
   // PEITO
   {
     id: 'supino-reto', nome: 'Supino reto', grupo: 'Peito', equipamento: 'Barra e banco', nivel: 'Intermediário',
@@ -191,5 +191,109 @@ export const EXERCICIOS = [
     dicas: ['Em quatro apoios, mãos sob os ombros.', 'Arredonde e depois estenda a coluna, alternando.', 'Sincronize com a respiração.'],
   },
 ];
+
+// Exercícios adicionais. São juntados aos de cima e ordenados por grupo.
+const MAIS = [
+  // PEITO
+  { id: 'supino-declinado', nome: 'Supino declinado', grupo: 'Peito', equipamento: 'Barra e banco declinado', nivel: 'Avançado', icone: 'weight-lifter', sugestao: '3 x 8-10',
+    descricao: 'Ênfase na parte inferior do peitoral. O banco declinado reduz a participação dos ombros.',
+    dicas: ['Prenda bem os pés no apoio do banco.', 'Desça a barra até a parte baixa do peito.', 'Peça um auxiliar para ajudar a tirar a barra do suporte.'] },
+  { id: 'crossover', nome: 'Crossover na polia', grupo: 'Peito', equipamento: 'Polia dupla', nivel: 'Intermediário', icone: 'arm-flex', sugestao: '3 x 12-15',
+    descricao: 'Exercício de isolamento com tensão constante no peitoral durante toda a amplitude.',
+    dicas: ['Incline levemente o tronco à frente.', 'Cruze as mãos à frente do corpo, apertando o peito.', 'Mantenha os cotovelos levemente flexionados.'] },
+  { id: 'pullover', nome: 'Pullover com halter', grupo: 'Peito', equipamento: 'Halter e banco', nivel: 'Intermediário', icone: 'dumbbell', sugestao: '3 x 12',
+    descricao: 'Trabalha peitoral e dorsais ao levar o halter atrás da cabeça em arco.',
+    dicas: ['Segure o halter com as duas mãos.', 'Desça até sentir o alongamento, sem arquear demais a lombar.', 'Traga o halter de volta em arco, com o abdômen firme.'] },
+  // COSTAS
+  { id: 'remada-unilateral', nome: 'Remada unilateral (serrote)', grupo: 'Costas', equipamento: 'Halter e banco', nivel: 'Iniciante', icone: 'dumbbell', sugestao: '3 x 10 cada lado',
+    descricao: 'Trabalha cada lado das costas separadamente, corrigindo diferenças de força.',
+    dicas: ['Apoie joelho e mão no banco, coluna reta.', 'Puxe o halter em direção ao quadril, não ao ombro.', 'Evite girar o tronco.'] },
+  { id: 'levantamento-terra', nome: 'Levantamento terra', grupo: 'Costas', equipamento: 'Barra', nivel: 'Avançado', icone: 'weight-lifter', sugestao: '4 x 5-6',
+    descricao: 'Um dos exercícios mais completos: trabalha costas, glúteos, posteriores e core.',
+    dicas: ['Barra rente às pernas durante todo o movimento.', 'Coluna neutra, peito aberto.', 'Comece com carga leve para aprender o padrão.'] },
+  { id: 'puxada-fechada', nome: 'Puxada com pegada fechada', grupo: 'Costas', equipamento: 'Polia alta com triângulo', nivel: 'Iniciante', icone: 'arm-flex', sugestao: '3 x 10-12',
+    descricao: 'Variação da puxada que exige mais da parte inferior do dorsal e dos bíceps.',
+    dicas: ['Peito aberto e leve inclinação do tronco.', 'Puxe até a altura do peito.', 'Controle a volta, sem soltar o peso.'] },
+  { id: 'remada-cavalinho', nome: 'Remada cavalinho', grupo: 'Costas', equipamento: 'Barra T ou máquina', nivel: 'Intermediário', icone: 'weight-lifter', sugestao: '3 x 10',
+    descricao: 'Remada de alta carga para a espessura das costas, com bom apoio para a lombar.',
+    dicas: ['Mantenha o tronco inclinado e a coluna reta.', 'Leve os cotovelos para trás, aproximando as escápulas.', 'Não use impulso do corpo.'] },
+  // PERNAS
+  { id: 'agachamento-bulgaro', nome: 'Agachamento búlgaro', grupo: 'Pernas', equipamento: 'Banco e halteres', nivel: 'Intermediário', icone: 'dumbbell', sugestao: '3 x 10 cada perna',
+    descricao: 'Agachamento unilateral com o pé de trás apoiado no banco. Exige força e equilíbrio.',
+    dicas: ['Dê um passo largo à frente para o joelho não passar muito da ponta do pé.', 'Desça com o tronco levemente inclinado.', 'Empurre pelo calcanhar da perna da frente.'] },
+  { id: 'hack', nome: 'Agachamento hack', grupo: 'Pernas', equipamento: 'Máquina hack', nivel: 'Intermediário', icone: 'weight-lifter', sugestao: '3 x 10',
+    descricao: 'Agachamento guiado pela máquina, com foco nos quadríceps e menor exigência de equilíbrio.',
+    dicas: ['Costas totalmente apoiadas no encosto.', 'Pés na largura dos ombros.', 'Desça até onde mantiver o quadril firme.'] },
+  { id: 'flexora-sentada', nome: 'Cadeira flexora', grupo: 'Pernas', equipamento: 'Máquina flexora', nivel: 'Iniciante', icone: 'arm-flex', sugestao: '3 x 12',
+    descricao: 'Isolamento da parte de trás da coxa (posteriores).',
+    dicas: ['Ajuste o encosto para o joelho alinhar com o eixo da máquina.', 'Flexione os joelhos sem tirar o quadril do assento.', 'Volte devagar, em 2 a 3 segundos.'] },
+  { id: 'elevacao-pelvica', nome: 'Elevação pélvica', grupo: 'Pernas', equipamento: 'Banco e barra (ou peso do corpo)', nivel: 'Iniciante', icone: 'weight-lifter', sugestao: '4 x 10-12',
+    descricao: 'Um dos melhores exercícios para glúteos. Pode ser feito só com o peso do corpo.',
+    dicas: ['Apoie as costas no banco e firme os pés no chão.', 'Suba o quadril até o tronco ficar alinhado com as coxas.', 'Aperte os glúteos no topo por 1 segundo.'] },
+  { id: 'agachamento-sumo', nome: 'Agachamento sumô', grupo: 'Pernas', equipamento: 'Halter ou kettlebell', nivel: 'Iniciante', icone: 'kettlebell', sugestao: '3 x 12',
+    descricao: 'Pés afastados e pontas para fora: mais trabalho para glúteos e parte interna da coxa.',
+    dicas: ['Joelhos acompanham a direção dos pés.', 'Segure o peso junto ao peito.', 'Mantenha o tronco ereto.'] },
+  { id: 'cadeira-abdutora', nome: 'Cadeira abdutora', grupo: 'Pernas', equipamento: 'Máquina abdutora', nivel: 'Iniciante', icone: 'arm-flex', sugestao: '3 x 15',
+    descricao: 'Fortalece glúteo médio e a lateral do quadril.',
+    dicas: ['Encoste bem as costas no banco.', 'Abra as pernas sem jogar o peso.', 'Retorne devagar, sem deixar as placas se tocarem.'] },
+  // OMBROS
+  { id: 'desenvolvimento-militar', nome: 'Desenvolvimento militar', grupo: 'Ombros', equipamento: 'Barra', nivel: 'Intermediário', icone: 'weight-lifter', sugestao: '4 x 8',
+    descricao: 'Empurrar a barra acima da cabeça, em pé, trabalhando ombros, tríceps e core.',
+    dicas: ['Glúteos e abdômen contraídos.', 'Leve a cabeça levemente para trás para a barra passar.', 'Não arqueie a lombar.'] },
+  { id: 'elevacao-frontal', nome: 'Elevação frontal', grupo: 'Ombros', equipamento: 'Halteres ou anilha', nivel: 'Iniciante', icone: 'dumbbell', sugestao: '3 x 12',
+    descricao: 'Isolamento da parte da frente do ombro.',
+    dicas: ['Suba até a altura dos ombros.', 'Cotovelos levemente flexionados.', 'Sem balançar o tronco.'] },
+  { id: 'crucifixo-inverso', nome: 'Crucifixo inverso', grupo: 'Ombros', equipamento: 'Halteres ou máquina', nivel: 'Intermediário', icone: 'arm-flex', sugestao: '3 x 12-15',
+    descricao: 'Trabalha a parte de trás do ombro e melhora a postura.',
+    dicas: ['Incline o tronco à frente com a coluna reta.', 'Abra os braços até a linha dos ombros.', 'Use carga leve e foque na contração.'] },
+  { id: 'encolhimento', nome: 'Encolhimento de ombros', grupo: 'Ombros', equipamento: 'Halteres ou barra', nivel: 'Iniciante', icone: 'dumbbell', sugestao: '3 x 12-15',
+    descricao: 'Trabalha o trapézio superior, entre o pescoço e os ombros.',
+    dicas: ['Suba os ombros em direção às orelhas.', 'Segure 1 segundo no topo.', 'Não gire os ombros.'] },
+  // BRAÇOS
+  { id: 'rosca-scott', nome: 'Rosca Scott', grupo: 'Braços', equipamento: 'Banco Scott e barra W', nivel: 'Intermediário', icone: 'arm-flex', sugestao: '3 x 10',
+    descricao: 'Rosca com os braços apoiados, que isola o bíceps e evita roubar com o corpo.',
+    dicas: ['Axilas bem encaixadas no apoio.', 'Não estenda totalmente os cotovelos embaixo.', 'Suba sem levantar os ombros.'] },
+  { id: 'rosca-concentrada', nome: 'Rosca concentrada', grupo: 'Braços', equipamento: 'Halter e banco', nivel: 'Iniciante', icone: 'dumbbell', sugestao: '3 x 12 cada braço',
+    descricao: 'Isolamento do bíceps, sentado e com o cotovelo apoiado na coxa.',
+    dicas: ['Cotovelo apoiado na parte interna da coxa.', 'Gire o punho para fora no topo.', 'Movimento lento e controlado.'] },
+  { id: 'triceps-frances', nome: 'Tríceps francês', grupo: 'Braços', equipamento: 'Halter', nivel: 'Intermediário', icone: 'dumbbell', sugestao: '3 x 10-12',
+    descricao: 'Alonga bastante o tríceps ao descer o halter atrás da cabeça.',
+    dicas: ['Cotovelos apontando para cima e próximos da cabeça.', 'Desça até sentir o alongamento.', 'Estenda sem abrir os cotovelos.'] },
+  { id: 'mergulho-banco', nome: 'Mergulho no banco', grupo: 'Braços', equipamento: 'Banco', nivel: 'Iniciante', icone: 'human-handsup', sugestao: '3 x 10-15',
+    descricao: 'Exercício com o peso do corpo para o tríceps, feito com as mãos apoiadas num banco.',
+    dicas: ['Mantenha o quadril próximo ao banco.', 'Desça até os cotovelos formarem cerca de 90°.', 'Se doer o ombro, reduza a amplitude.'] },
+  // ABDÔMEN
+  { id: 'prancha-lateral', nome: 'Prancha lateral', grupo: 'Abdômen', equipamento: 'Colchonete', nivel: 'Intermediário', icone: 'human-handsup', sugestao: '3 x 30s cada lado',
+    descricao: 'Fortalece os oblíquos e estabiliza o tronco.',
+    dicas: ['Cotovelo sob o ombro.', 'Corpo em linha reta, do pé à cabeça.', 'Não deixe o quadril cair.'] },
+  { id: 'bicicleta-ar', nome: 'Abdominal bicicleta', grupo: 'Abdômen', equipamento: 'Colchonete', nivel: 'Iniciante', icone: 'bike', sugestao: '3 x 20',
+    descricao: 'Trabalha reto abdominal e oblíquos com movimento alternado.',
+    dicas: ['Leve o cotovelo em direção ao joelho oposto.', 'Mantenha a lombar apoiada no chão.', 'Faça devagar, sem puxar o pescoço.'] },
+  { id: 'russian-twist', nome: 'Rotação russa', grupo: 'Abdômen', equipamento: 'Colchonete e anilha (opcional)', nivel: 'Intermediário', icone: 'kettlebell', sugestao: '3 x 20',
+    descricao: 'Rotação do tronco sentado, ótima para os oblíquos.',
+    dicas: ['Incline o tronco para trás com a coluna reta.', 'Gire os ombros, não só os braços.', 'Para facilitar, mantenha os pés no chão.'] },
+  // CARDIO
+  { id: 'eliptico', nome: 'Elíptico', grupo: 'Cardio', equipamento: 'Elíptico', nivel: 'Iniciante', icone: 'run', sugestao: '20-30 min',
+    descricao: 'Cardio de baixo impacto, bom para quem quer proteger as articulações.',
+    dicas: ['Postura ereta, sem se apoiar demais nas alças.', 'Mantenha um ritmo em que ainda consiga conversar.', 'Aumente a resistência aos poucos.'] },
+  { id: 'escada', nome: 'Simulador de escada', grupo: 'Cardio', equipamento: 'Máquina de escada', nivel: 'Intermediário', icone: 'stairs', sugestao: '10-15 min',
+    descricao: 'Cardio intenso que também trabalha glúteos e pernas.',
+    dicas: ['Pise com o pé inteiro no degrau.', 'Evite se pendurar nas barras.', 'Comece em ritmo moderado.'] },
+  { id: 'mountain-climber', nome: 'Escalador (mountain climber)', grupo: 'Cardio', equipamento: 'Peso do corpo', nivel: 'Intermediário', icone: 'run-fast', sugestao: '4 x 30s',
+    descricao: 'Em posição de prancha, você alterna os joelhos em direção ao peito, elevando a frequência cardíaca.',
+    dicas: ['Mãos sob os ombros e corpo alinhado.', 'Quadril baixo, sem empinar.', 'Mantenha o abdômen contraído.'] },
+  // MOBILIDADE
+  { id: 'alongamento-peitoral', nome: 'Alongamento de peitoral', grupo: 'Mobilidade', equipamento: 'Parede ou batente', nivel: 'Iniciante', icone: 'human-handsup', sugestao: '2 x 30s cada lado',
+    descricao: 'Abre o peito e ajuda a corrigir a postura de ombros curvados.',
+    dicas: ['Apoie o antebraço na parede, cotovelo na altura do ombro.', 'Gire o corpo para o lado oposto.', 'Respire fundo, sem forçar.'] },
+  { id: 'postura-crianca', nome: 'Postura da criança', grupo: 'Mobilidade', equipamento: 'Colchonete', nivel: 'Iniciante', icone: 'yoga', sugestao: '2 x 30-45s',
+    descricao: 'Alonga costas, quadril e ombros. Ótima para relaxar depois do treino.',
+    dicas: ['Sente sobre os calcanhares e estenda os braços à frente.', 'Relaxe a testa no chão.', 'Respire pelo abdômen.'] },
+  { id: 'alongamento-quadriceps', nome: 'Alongamento de quadríceps', grupo: 'Mobilidade', equipamento: 'Peso do corpo', nivel: 'Iniciante', icone: 'meditation', sugestao: '2 x 30s cada perna',
+    descricao: 'Alonga a frente da coxa, útil depois de treinos de perna e corrida.',
+    dicas: ['Segure o pé e leve o calcanhar ao glúteo.', 'Joelhos juntos, quadril alinhado.', 'Apoie-se numa parede se precisar.'] },
+];
+
+export const EXERCICIOS = [...BASE, ...MAIS].sort((a, b) => GRUPOS.indexOf(a.grupo) - GRUPOS.indexOf(b.grupo));
 
 export const exercicioPorId = (id) => EXERCICIOS.find((e) => e.id === id);

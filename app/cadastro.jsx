@@ -12,6 +12,8 @@ import { adicionarMedida } from '@/services/medidas';
 import { salvarPerfil, usePerfil } from '@/services/perfil';
 
 const numero = (v) => Number(String(v).replace(',', '.'));
+// Aceita 170 (cm) ou 1,70 (m) e guarda sempre em cm.
+const alturaEmCm = (v) => { const n = numero(v); return Math.round(n > 0 && n < 3 ? n * 100 : n); };
 const TITULOS = ['Sobre você', 'Seu corpo', 'Seus objetivos'];
 
 export default function Cadastro() {
@@ -56,9 +58,9 @@ export default function Cadastro() {
     }
     if (p === 1) {
       const pe = numero(peso);
-      if (!pe || pe < 25 || pe > 300) novo.peso = 'Informe um peso entre 25 e 300 kg.';
+      if (!(pe > 0)) novo.peso = 'Informe seu peso em kg (ex.: 68,5).';
       const a = numero(altura);
-      if (!a || a < 100 || a > 230) novo.altura = 'Informe a altura em cm (ex.: 170).';
+      if (!(a > 0)) novo.altura = 'Informe sua altura (ex.: 170 ou 1,70).';
     }
     if (p === 2 && !objetivo) novo.objetivo = 'Escolha seu objetivo.';
     setErros(novo);
@@ -81,7 +83,7 @@ export default function Cadastro() {
       idade: Math.round(numero(idade)),
       sexo,
       peso: numero(peso),
-      altura: Math.round(numero(altura)),
+      altura: alturaEmCm(altura),
       objetivo,
       nivel,
       diasSemana: dias,
@@ -140,8 +142,8 @@ export default function Cadastro() {
 
       {passo === 1 && (
         <View>
-          <Campo rotulo="Peso" valor={peso} onChange={setPeso} placeholder="Ex.: 68,5" teclado="decimal-pad" sufixo="kg" erro={erros.peso} maxLength={6} />
-          <Campo rotulo="Altura" valor={altura} onChange={setAltura} placeholder="Ex.: 170" teclado="numeric" sufixo="cm" erro={erros.altura} maxLength={3} />
+          <Campo rotulo="Peso" valor={peso} onChange={setPeso} placeholder="Ex.: 68,5" teclado="decimal-pad" sufixo="kg" erro={erros.peso} maxLength={7} />
+          <Campo rotulo="Altura" valor={altura} onChange={setAltura} placeholder="Ex.: 170 ou 1,70" teclado="decimal-pad" sufixo="cm" erro={erros.altura} maxLength={5} />
         </View>
       )}
 

@@ -1,0 +1,2 @@
+Coloque aqui as fotos dos personais, com o nome igual ao id (rafael, camila, bruno, juliana, thiago).
+Depois rode: node scripts/gerar-fotos.js
