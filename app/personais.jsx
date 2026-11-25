@@ -40,7 +40,7 @@ export default function Personais() {
           </Cartao>
           {PERSONAIS.map((p) => (
             <Pressable key={p.id} onPress={() => router.push(`/personal/${p.id}`)} style={({ pressed }) => [s.card, pressed && { opacity: 0.85 }]}>
-              <Avatar nome={p.nome} />
+              <Avatar nome={p.nome} id={p.id} />
               <View style={{ flex: 1 }}>
                 <Text style={s.nome}>{p.nome}</Text>
                 <Text style={s.meta}>{p.especialidades.join(' · ')}</Text>
@@ -67,7 +67,7 @@ export default function Personais() {
           return (
             <Cartao key={c.id} style={{ marginBottom: 12, gap: 10 }}>
               <View style={s.linha}>
-                <Avatar nome={p.nome} tamanho={46} />
+                <Avatar nome={p.nome} id={p.id} tamanho={46} />
                 <View style={{ flex: 1 }}>
                   <Text style={s.nome}>{p.nome}</Text>
                   <Text style={s.meta}>{pac.nome} · válido por {pac.validade} dias</Text>

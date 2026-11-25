@@ -23,10 +23,10 @@ export function Medidas({ perfil, serie, medidasSalvas }) {
   async function salvar() {
     const novo = {};
     const p = num(peso);
-    if (!p || p < 25 || p > 300) novo.peso = 'Informe um peso entre 25 e 300 kg.';
+    if (!(p > 0)) novo.peso = 'Informe seu peso em kg (ex.: 68,5).';
     if (!vazio(gordura) && !(num(gordura) >= 3 && num(gordura) <= 60)) novo.gordura = 'Informe entre 3% e 60%.';
     if (!vazio(cintura) && !(num(cintura) >= 40 && num(cintura) <= 200)) novo.cintura = 'Informe entre 40 e 200 cm.';
-    if (!vazio(meta) && !(num(meta) >= 25 && num(meta) <= 300)) novo.meta = 'Informe entre 25 e 300 kg.';
+    if (!vazio(meta) && !(num(meta) > 0)) novo.meta = 'Informe um valor maior que zero.';
     setErros(novo);
     setAviso('');
     if (Object.keys(novo).length) return;

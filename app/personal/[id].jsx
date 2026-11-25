@@ -74,7 +74,7 @@ export default function DetalhePersonal() {
   return (
     <Tela titulo={personal.nome} voltar>
       <View style={s.cabeca}>
-        <Avatar nome={personal.nome} tamanho={84} />
+        <Avatar nome={personal.nome} id={personal.id} tamanho={84} />
         <View style={s.selos}>
           {personal.especialidades.map((e) => (
             <Selo key={e} texto={e} destaque />

@@ -58,7 +58,9 @@ function Corredor({ largura }) {
 // Fundo com pessoas treinando. Se `FOTO_FUNDO` (constants/marca.js) tiver uma foto, ela é usada no lugar da ilustração.
 export function FundoTreino({ altura = 200, raio = 0, absoluto = false, children }) {
   const camadas = FOTO_FUNDO ? (
-    <ImageBackground source={FOTO_FUNDO} resizeMode="cover" style={StyleSheet.absoluteFill} />
+    <ImageBackground source={FOTO_FUNDO} resizeMode="cover" style={StyleSheet.absoluteFill}>
+      <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(11,11,12,0.5)' }]} />
+    </ImageBackground>
   ) : (
     <>
       <Svg style={StyleSheet.absoluteFill} width="100%" height="100%">

@@ -1,0 +1,2 @@
+Coloque aqui as fotos dos exercicios, com o nome igual ao id (ex.: supino-reto.jpg).
+Depois rode: node scripts/gerar-fotos.js

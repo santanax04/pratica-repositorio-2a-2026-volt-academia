@@ -1,10 +1,12 @@
-import { Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useState } from 'react';
+import { Image, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Redirect, useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { cores, raio } from '@/constants/tema';
 import { usePerfil } from '@/services/perfil';
 import { introVista } from '@/services/sessao';
+import { FOTOS_PERSONAIS } from '@/data/fotos-personais';
 
 // ─── Tela padrão: fundo escuro, rolagem, cabeçalho opcional e trava de cadastro ───
 export function Tela({ titulo, subtitulo, voltar = false, acao, exigirCadastro = true, children }) {
@@ -59,9 +61,12 @@ export function IconeTile({ nome, tamanho = 52, cor = cores.lima, fundo = cores.
   );
 }
 
-export function Avatar({ nome, tamanho = 56 }) {
+export function Avatar({ nome, id, tamanho = 56 }) {
+  const foto = id ? FOTOS_PERSONAIS[id] : null;
+  const moldura = { width: tamanho, height: tamanho, borderRadius: tamanho * 0.32, overflow: 'hidden' };
+  if (foto) return <Image source={foto} resizeMode="cover" style={moldura} />;
   return (
-    <View style={{ width: tamanho, height: tamanho, borderRadius: tamanho * 0.32, backgroundColor: cores.lima, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={[moldura, { backgroundColor: cores.lima, alignItems: 'center', justifyContent: 'center' }]}>
       <Text style={{ color: cores.fundo, fontWeight: '900', fontSize: tamanho * 0.42 }}>{nome.trim()[0]?.toUpperCase()}</Text>
     </View>
   );
@@ -153,20 +158,28 @@ export function Vazio({ icone = 'dumbbell', titulo, texto, children }) {
 }
 
 export function Campo({ rotulo, valor, onChange, placeholder, teclado, sufixo, erro, maxLength }) {
+  const [foco, setFoco] = useState(false);
   return (
-    <View style={{ marginBottom: 16 }}>
+    <View style={{ marginBottom: 18 }}>
       <Text style={e.rotulo}>{rotulo}</Text>
-      <View style={[e.campo, !!erro && { borderColor: cores.erro }]}>
+      <View style={[e.campo, foco && e.campoFoco, !!erro && { borderColor: cores.erro, backgroundColor: 'rgba(255,92,92,0.06)' }]}>
         <TextInput
           value={valor}
           onChangeText={onChange}
+          onFocus={() => setFoco(true)}
+          onBlur={() => setFoco(false)}
           placeholder={placeholder}
           placeholderTextColor={cores.texto3}
+          selectionColor={cores.lima}
           keyboardType={teclado}
           maxLength={maxLength}
           style={[e.campoInput, Platform.OS === 'web' && { outlineStyle: 'none' }]}
         />
-        {!!sufixo && <Text style={e.campoSufixo}>{sufixo}</Text>}
+        {!!sufixo && (
+          <View style={e.campoPilula}>
+            <Text style={e.campoSufixo}>{sufixo}</Text>
+          </View>
+        )}
       </View>
       {!!erro && <Text style={e.erro}>{erro}</Text>}
     </View>
@@ -211,7 +224,9 @@ const e = StyleSheet.create({
     flexDirection: 'row', alignItems: 'center', backgroundColor: cores.superficie, borderRadius: raio.m,
     borderWidth: 1, borderColor: cores.borda, paddingHorizontal: 16, minHeight: 54,
   },
-  campoInput: { flex: 1, color: cores.texto, fontSize: 16, paddingVertical: 12 },
-  campoSufixo: { color: cores.texto3, fontWeight: '800', marginLeft: 8 },
+  campoInput: { flex: 1, color: cores.texto, fontSize: 18, fontWeight: '700', paddingVertical: 14 },
+  campoFoco: { borderColor: cores.lima, backgroundColor: 'rgba(198,255,61,0.05)' },
+  campoPilula: { backgroundColor: cores.superficie2, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 6, marginLeft: 8 },
+  campoSufixo: { color: cores.texto2, fontWeight: '800', fontSize: 12, letterSpacing: 0.4 },
   erro: { color: cores.erro, fontSize: 12, marginTop: 6, fontWeight: '600' },
 });
