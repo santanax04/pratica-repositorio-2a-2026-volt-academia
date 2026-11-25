@@ -131,15 +131,15 @@ export const exerciciosDoTreino = (treino) =>
 
 export const PLANOS = [
   {
-    id: 'mensal', nome: 'Mensal', periodo: '1 mês', dias: 30, maxParcelas: 1, porMes: 119.9, total: 119.9, selo: null,
+    id: 'mensal', nome: 'Mensal', periodo: '1 mês', dias: 30, maxParcelas: 1, porMes: 79.9, total: 79.9, selo: null,
     beneficios: ['Acesso livre à musculação', 'Ficha de treino personalizada', 'Avaliação física inicial'],
   },
   {
-    id: 'trimestral', nome: 'Trimestral', periodo: '3 meses', dias: 90, maxParcelas: 3, porMes: 99.9, total: 299.7, selo: 'Mais popular',
+    id: 'trimestral', nome: 'Trimestral', periodo: '3 meses', dias: 90, maxParcelas: 3, porMes: 84.9, total: 254.9, selo: 'Mais popular',
     beneficios: ['Tudo do plano mensal', 'Aulas coletivas (spinning, funcional)', 'Reavaliação física a cada mês', '1 convidado por mês'],
   },
   {
-    id: 'anual', nome: 'Anual', periodo: '12 meses', dias: 365, maxParcelas: 12, porMes: 79.9, total: 958.8, selo: 'Melhor custo',
+    id: 'anual', nome: 'Anual', periodo: '12 meses', dias: 365, maxParcelas: 12, porMes: 64.9, total: 778.8, selo: 'Melhor custo',
     beneficios: ['Tudo do plano trimestral', 'Acompanhamento nutricional', 'Camiseta VOLT', 'Congelamento por até 30 dias'],
   },
 ];
